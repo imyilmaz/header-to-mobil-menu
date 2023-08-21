@@ -40,6 +40,36 @@
         opacity: 0; 
     }
 }
+@keyframes css-only {
+    0% {
+        color: #19dcea;
+    }
+    25% {
+        color: #b22cff;
+    }
+    50% {
+        color: #ea2222;
+    }
+    75% {
+        color: #f5be10;
+    }
+    100% {
+        color: #3bd80d;
+    }
+}
+
+@keyframes hidden-animate {
+    0%{
+        opacity: 1;
+    }
+    99%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+        pointer-events: none;
+    }
+}
 .hamburger{ 
     display: none; 
     position: fixed; 
@@ -277,4 +307,61 @@
             }
         }
     }//header
+    .animate-loader{
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: #000;
+        z-index: 64;
+        opacity: 1;
+        &:before{
+            content: "CSS ONLY";
+            font-size: 10vw;
+            width: 90%;
+            text-align: center;
+            font-weight: bold;
+            color: var(--im-loader-color-font);
+            position: absolute;
+            left: 50%;
+            bottom: 50%; 
+            transform: translate(-50%, -50px);
+            animation: {
+                name: css-only;
+                duration: 4s;
+                direction: alternate;
+                timing-function: linear;
+                iteration-count: infinite;
+            } 
+        }
+        &:after{
+            content: "HEADER TO MOBIL MENU";
+            font-size: 10vw;
+            width: 90%;
+            text-align: center;
+            font-weight: bold;
+            color: var(--im-loader-color-font);
+            position: absolute;
+            left: 50%;
+            top: 50%; 
+            transform: translate(-50%, -50px);
+            animation: {
+                name: css-only;
+                duration: 4s;
+                direction: alternate;
+                timing-function: linear;
+                iteration-count: infinite;
+            } 
+        }
+        animation: {
+            name: hidden-animate;
+            duration: 1s;
+            delay: 1.5s;
+            direction: alternate;
+            timing-function: linear;
+            fill-mode: both;
+            iteration-count: 1;
+        } 
+    }
 }//media max-width:992
