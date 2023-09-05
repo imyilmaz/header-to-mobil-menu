@@ -3,10 +3,15 @@
 @import 'im-flex-generate';
 
 body{
-    background: var(--im-body-bg);
+    
 }
 
 .header{
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 53;
+    box-shadow: 0 0px 6px rgba(0,0,0,.2);
     .nav{
         >ul{
             display: flex;
@@ -20,7 +25,7 @@ body{
                     display: block;
                     font-size: 1rem;
                     line-height: 1;
-                    color: var(--im-color-white-font);
+                    color: var(--im-color-dark-font);
                     padding: 2rem 1rem;
                     transition: .4s;
                     &:hover{
@@ -29,7 +34,7 @@ body{
                 }
                 >.loverlay{ 
                     position: fixed; 
-                    top: 0;
+                    top: 80px;
                     bottom: 0;
                     left: 0;
                     right: 0;
@@ -37,6 +42,7 @@ body{
                     opacity: 0;
                     pointer-events: none;
                     transition: .4s; 
+                    z-index: -1;
                 }
                 >.sub-menu{
                     position: absolute;
@@ -80,6 +86,71 @@ body{
     }//nav
 }//header
 
+
+.animate-loader{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    z-index: 64;
+    opacity: 1;
+    &:before{
+        content: "CSS ONLY";
+        font-size: 10vw;
+        width: 90%;
+        text-align: center;
+        font-weight: bold;
+        color: var(--im-loader-color-font);
+        position: absolute;
+        left: 50%;
+        bottom: 50%; 
+        transform: translate(-50%, -50px);
+        animation: {
+            name: css-only;
+            duration: 4s;
+            direction: alternate;
+            timing-function: linear;
+            iteration-count: infinite;
+        } 
+    }
+    &:after{
+        content: "HEADER TO MOBIL MENU";
+        font-size: 10vw;
+        width: 90%;
+        text-align: center;
+        font-weight: bold;
+        color: var(--im-loader-color-font);
+        position: absolute;
+        left: 50%;
+        top: 50%; 
+        transform: translate(-50%, -50px);
+        animation: {
+            name: css-only;
+            duration: 4s;
+            direction: alternate;
+            timing-function: linear;
+            iteration-count: infinite;
+        } 
+    }
+    animation: {
+        name: hidden-animate;
+        duration: 1s;
+        delay: 1.5s;
+        direction: alternate;
+        timing-function: linear;
+        fill-mode: both;
+        iteration-count: 1;
+    } 
+}
+
+section{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
 
 
 // responsive import'unun en sonda olduğuna emin olun.
